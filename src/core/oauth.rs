@@ -41,10 +41,6 @@ pub struct OAuthCodeResponse {
     pub permissions: AHashSet<Permission>,
 
     #[serde(default)]
-    #[serde(rename = "isEnterprise")]
-    pub is_enterprise: bool,
-
-    #[serde(default)]
     pub version: Option<String>,
 
     // TODO - Deprecated - remove in future
@@ -101,7 +97,6 @@ pub enum AuthenticationResult<T> {
 pub struct AuthenticationResponse {
     pub grant: OAuthGrant,
     pub permissions: AHashSet<Permission>,
-    pub is_enterprise: bool,
 }
 
 const REDIRECT_URI: &str = "stalwart://auth";
@@ -133,7 +128,6 @@ pub async fn oauth_authenticate(
         AuthenticationResult::Error(err) => return AuthenticationResult::Error(err),
     };
     let permissions = response.permissions;
-    let is_enterprise = response.is_enterprise;
     match HttpRequest::post(format!("{base_url}/auth/token"))
         .with_raw_body(
             serde_urlencoded::to_string([
@@ -153,7 +147,6 @@ pub async fn oauth_authenticate(
             AuthenticationResult::Success(AuthenticationResponse {
                 grant,
                 permissions,
-                is_enterprise,
             })
         }
         Ok(OAuthResponse::Error { error }) => AuthenticationResult::Error(

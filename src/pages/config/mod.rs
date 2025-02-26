@@ -316,15 +316,6 @@ impl LayoutBuilder {
             .create("Form submission")
             .route("/form/edit")
             .insert(true)
-            // Enterprise
-            .create("AI Models")
-            .route("/ai-models")
-            .insert(true)
-            // Enterprise
-            .create("Enterprise")
-            .route("/enterprise/edit")
-            .insert(true)
-            .insert(true)
             // Storage
             .create("Storage")
             .icon(view! { <IconCircleStack/> })

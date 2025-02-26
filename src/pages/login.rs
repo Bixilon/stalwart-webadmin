@@ -53,7 +53,7 @@ pub fn Login() -> impl IntoView {
                 match oauth_authenticate(&base_url, &username, &password).await {
                     AuthenticationResult::Success(response) => {
                         let permissions = Permissions::new(response.permissions);
-                        let default_url = permissions.default_url(response.is_enterprise);
+                        let default_url = permissions.default_url();
 
                         if default_url.is_empty() {
                             alert.set(Alert::error(
@@ -70,7 +70,6 @@ pub fn Login() -> impl IntoView {
                             auth_token.username = username.into();
                             auth_token.is_valid = true;
                             auth_token.permissions = permissions;
-                            auth_token.is_enterprise = response.is_enterprise;
 
                             if let Err(err) =
                                 SessionStorage::set(STATE_STORAGE_KEY, auth_token.clone())

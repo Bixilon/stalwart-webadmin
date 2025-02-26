@@ -28,11 +28,6 @@ use pages::{
     },
     config::edit::DEFAULT_SETTINGS_URL,
     directory::{dns::DnsDisplay, edit::PrincipalEdit, list::PrincipalList},
-    enterprise::{
-        dashboard::Dashboard,
-        tracing::{display::SpanDisplay, list::SpanList, live::LiveTracing},
-        undelete::UndeleteList,
-    },
     manage::{
         spam::{SpamTest, SpamTrain},
         troubleshoot::{TroubleshootDelivery, TroubleshootDmarc},
@@ -166,20 +161,6 @@ pub fn App() -> impl IntoView {
                     redirect_path="/login"
                     condition=move || permissions.get().is_some()
                 >
-                    <ProtectedRoute
-                        path="/dashboard/:object?"
-                        view=Dashboard
-                        redirect_path="/login"
-                        condition=move || {
-                            permissions
-                                .get()
-                                .is_some_and(|p| {
-                                    p.has_access_all(
-                                        &[Permission::MetricsList, Permission::MetricsLive],
-                                    )
-                                })
-                        }
-                    />
 
                     <ProtectedRoute
                         path="/directory/:object"
@@ -360,50 +341,6 @@ pub fn App() -> impl IntoView {
                                         ],
                                     )
                                 })
-                        }
-                    />
-
-                    <ProtectedRoute
-                        path="/undelete/:id"
-                        view=UndeleteList
-                        redirect_path="/login"
-                        condition=move || {
-                            permissions
-                                .get()
-                                .is_some_and(|p| { p.has_access(Permission::Undelete) })
-                        }
-                    />
-
-                    <ProtectedRoute
-                        path="/tracing/span/:id"
-                        view=SpanDisplay
-                        redirect_path="/login"
-                        condition=move || {
-                            permissions
-                                .get()
-                                .is_some_and(|p| { p.has_access(Permission::TracingGet) })
-                        }
-                    />
-
-                    <ProtectedRoute
-                        path="/tracing/live"
-                        view=LiveTracing
-                        redirect_path="/login"
-                        condition=move || {
-                            permissions
-                                .get()
-                                .is_some_and(|p| { p.has_access(Permission::TracingLive) })
-                        }
-                    />
-
-                    <ProtectedRoute
-                        path="/tracing/:object"
-                        view=SpanList
-                        redirect_path="/login"
-                        condition=move || {
-                            permissions
-                                .get()
-                                .is_some_and(|p| { p.has_access(Permission::TracingList) })
                         }
                     />
 
@@ -735,7 +672,6 @@ pub fn build_schemas() -> Arc<Schemas> {
         .build_authorize()
         .build_mfa()
         .build_app_passwords()
-        .build_live_tracing()
         .build_troubleshoot()
         .build()
         .into()

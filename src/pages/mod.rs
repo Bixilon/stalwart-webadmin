@@ -11,7 +11,6 @@ pub mod account;
 pub mod authorize;
 pub mod config;
 pub mod directory;
-pub mod enterprise;
 pub mod login;
 pub mod manage;
 pub mod notfound;

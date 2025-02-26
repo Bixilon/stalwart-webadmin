@@ -166,16 +166,6 @@ impl Builder<Schemas, ()> {
             .default("30d")
             .typ(Type::Duration)
             .build()
-            .new_field("storage.undelete.retention")
-            .label("Un-delete period")
-            .help(concat!(
-                "How long to keep deleted emails before they are permanently ",
-                "removed from the system. (Enterprise feature)"
-            ))
-            .default("false")
-            .typ(Type::Duration)
-            .enterprise_feature()
-            .build()
             .new_form_section()
             .title("Data Store")
             .fields([

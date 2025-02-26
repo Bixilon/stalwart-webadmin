@@ -25,7 +25,6 @@ pub struct AccessToken {
     pub refresh_token: Arc<String>,
     pub username: Arc<String>,
     pub is_valid: bool,
-    pub is_enterprise: bool,
     pub permissions: Permissions,
 }
 
@@ -141,12 +140,8 @@ impl AccessToken {
         &self.permissions
     }
 
-    pub fn is_enterprise(&self) -> bool {
-        self.is_enterprise
-    }
-
     pub fn default_url(&self) -> &'static str {
-        self.permissions.default_url(self.is_enterprise)
+        self.permissions.default_url()
     }
 }
 
@@ -171,10 +166,8 @@ impl Permissions {
         self.0.contains(&permission)
     }
 
-    pub fn default_url(&self, is_enterprise: bool) -> &'static str {
-        if is_enterprise
-            && self.0.contains(&Permission::MetricsList)
-            && self.0.contains(&Permission::MetricsLive)
+    pub fn default_url(&self) -> &'static str {
+        if false
         {
             "/manage/dashboard/overview"
         } else {

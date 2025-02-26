@@ -85,7 +85,6 @@ pub fn PrincipalEdit() -> impl IntoView {
             _ => PrincipalType::Individual,
         }
     });
-    let is_enterprise = auth.get_untracked().is_enterprise();
     let is_tenant = !auth
         .get_untracked()
         .permissions()
@@ -132,7 +131,6 @@ pub fn PrincipalEdit() -> impl IntoView {
                     PrincipalType::Group => Permission::GroupList,
                     PrincipalType::List => Permission::MailingListList,
                     PrincipalType::Domain => Permission::DomainList,
-                    PrincipalType::Tenant if is_enterprise => Permission::TenantList,
                     PrincipalType::Role => Permission::RoleList,
                     _ => continue,
                 };
@@ -474,34 +472,6 @@ pub fn PrincipalEdit() -> impl IntoView {
 
                                         <FormItem
                                             stacked=true
-                                            label="Tenant"
-
-                                            hide=Signal::derive(move || {
-                                                is_tenant
-                                                    || matches!(
-                                                        selected_type.get(),
-                                                        PrincipalType::Tenant | PrincipalType::OauthClient
-                                                    )
-                                            })
-                                        >
-
-                                            <Select
-                                                element=FormElement::new("tenant", data)
-                                                add_none=true
-                                                disabled=!is_enterprise
-                                                options=create_memo(move |_| {
-                                                    principals
-                                                        .get()
-                                                        .get(&PrincipalType::Tenant)
-                                                        .cloned()
-                                                        .unwrap_or_default()
-                                                })
-                                            />
-
-                                        </FormItem>
-
-                                        <FormItem
-                                            stacked=true
                                             label="Email"
                                             hide=Signal::derive(move || {
                                                 !matches!(
@@ -537,25 +507,6 @@ pub fn PrincipalEdit() -> impl IntoView {
                                                 element=FormElement::new("aliases", data)
                                                 placeholder="Email"
                                                 add_button_text="Add Email".to_string()
-                                            />
-                                        </FormItem>
-
-                                        <FormItem
-                                            stacked=true
-                                            label="Logo URL"
-                                            hide=Signal::derive(move || {
-                                                !matches!(
-                                                    selected_type.get(),
-                                                    PrincipalType::Tenant
-                                                    | PrincipalType::Domain
-                                                    | PrincipalType::OauthClient
-                                                )
-                                            })
-                                        >
-
-                                            <InputText
-                                                element=FormElement::new("picture", data)
-                                                disabled=!is_enterprise
                                             />
                                         </FormItem>
 
