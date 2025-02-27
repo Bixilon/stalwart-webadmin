@@ -388,41 +388,6 @@ impl Builder<Schemas, ()> {
             .fields(["metrics.disabled-events"])
             .build()
             .build()
-
-            // Alerts
-            .new_schema("alerts")
-            .names("alert", "alerts")
-            .prefix("metrics.alerts")
-            .suffix("condition")
-            // Id
-            .new_id_field()
-            .label("Alert Id")
-            .help("Unique identifier for the alert")
-            .build()
-            // Forms
-            .new_form_section()
-            .title("Alert configuration")
-            .fields(["_id", "enable", "condition"])
-            .build()
-            .new_form_section()
-            .title("E-mail notification")
-            .fields([
-                "notify.email.from-name",
-                "notify.email.from-addr",
-                "notify.email.to",
-                "notify.email.subject",
-                "notify.email.body",
-                "notify.email.enable",
-            ])
-            .build()
-            .new_form_section()
-            .title("Event notification")
-            .fields(["notify.event.message", "notify.event.enable"])
-            .build()
-            .list_title("Alerts")
-            .list_subtitle("Manage alerts")
-            .list_fields(["_id", "enable", "condition"])
-            .build()
     }
 }
 
