@@ -1,6 +1,6 @@
 {
     "name": "stalwart-admin",
-    "version": "0.1.24-foss",
+    "version": "0.1.24-foss2",
     "description": "",
     "main": "index.js",
     "scripts": {
