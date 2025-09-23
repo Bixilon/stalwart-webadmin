@@ -383,10 +383,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                             let component = match field.typ_ {
                                                 Type::Input => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
                                                         <InputText
                                                             element=FormElement::new(field.id, data)
                                                             placeholder=create_memo(move |_| {
@@ -403,10 +399,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Array(ArrayType::Text) => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <StackedInput
                                                             add_button_text="Add".to_string()
@@ -423,10 +415,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Array(ArrayType::Duration) => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <StackedDuration
                                                             add_button_text="Add".to_string()
@@ -437,10 +425,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Secret => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputPassword
                                                             element=FormElement::new(field.id, data)
@@ -451,10 +435,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Select { typ: SelectType::Single, .. } => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <Select
                                                             element=FormElement::new(field.id, data)
@@ -465,10 +445,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Select { typ: SelectType::Many, .. } => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <CheckboxGroup
                                                             element=FormElement::new(field.id, data)
@@ -479,10 +455,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Select { typ: SelectType::ManyWithSearch, .. } => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <StackedBadge
                                                             element=FormElement::new(field.id, data)
@@ -494,10 +466,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Size => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputSize
                                                             element=FormElement::new(field.id, data)
@@ -508,10 +476,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Boolean => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputSwitch
                                                             label=field_label
@@ -524,10 +488,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Duration => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputDuration
                                                             element=FormElement::new(field.id, data)
@@ -538,10 +498,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Rate => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputRate
                                                             element=FormElement::new(field.id, data)
@@ -552,10 +508,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Expression => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <InputExpression element=FormElement::new(field.id, data)/>
                                                     }
@@ -563,10 +515,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Cron => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <SelectCron element=FormElement::new(field.id, data)/>
                                                     }
@@ -574,10 +522,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Text => {
                                                     view! {
-                                                        // SPDX-SnippetBegin
-                                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                                        // SPDX-SnippetEnd
 
                                                         <TextArea
                                                             element=FormElement::new(field.id, data)
@@ -596,10 +540,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                             };
                                             if !is_switch {
                                                 view! {
-                                                    // SPDX-SnippetBegin
-                                                    // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                    // SPDX-License-Identifier: LicenseRef-SEL
-                                                    // SPDX-SnippetEnd
 
                                                     <FormItem
                                                         label=field_label
@@ -612,10 +552,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                             } else {
                                                 view! {
-                                                    // SPDX-SnippetBegin
-                                                    // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                                    // SPDX-License-Identifier: LicenseRef-SEL
-                                                    // SPDX-SnippetEnd
 
                                                     <FormItem label="" hide=hide_label is_optional=is_optional>
                                                         {component}
@@ -625,10 +561,6 @@ pub fn SettingsEdit() -> impl IntoView {
                                         })
                                         .collect_view();
                                     view! {
-                                        // SPDX-SnippetBegin
-                                        // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-                                        // SPDX-License-Identifier: LicenseRef-SEL
-                                        // SPDX-SnippetEnd
 
                                         <FormSection
                                             title=title.unwrap_or_default()
