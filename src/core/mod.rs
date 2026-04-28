@@ -141,14 +141,6 @@ impl AccessToken {
         &self.permissions
     }
 
-    // SPDX-SnippetBegin
-    // SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-    // SPDX-License-Identifier: LicenseRef-SEL
-    #[cfg(feature = "enterprise")]
-    pub fn is_enterprise(&self) -> bool {
-        self.is_enterprise
-    }
-    // SPDX-SnippetEnd
 
     #[cfg(not(feature = "enterprise"))]
     pub fn is_enterprise(&self) -> bool {

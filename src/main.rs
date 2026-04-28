@@ -34,16 +34,6 @@ use pages::{
     },
 };
 
-// SPDX-SnippetBegin
-// SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
-// SPDX-License-Identifier: LicenseRef-SEL
-#[cfg(feature = "enterprise")]
-use crate::pages::enterprise::{
-    dashboard::Dashboard,
-    tracing::{display::SpanDisplay, list::SpanList, live::LiveTracing},
-    undelete::UndeleteList,
-};
-// SPDX-SnippetEnd
 
 pub static VERSION_NAME: &str = concat!("Stalwart Management UI v", env!("CARGO_PKG_VERSION"),);
 
